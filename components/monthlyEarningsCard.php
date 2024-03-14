@@ -5,6 +5,8 @@ $currentMonth = date('F');
 
 //Get Total Amount
 $totalSum = 0;
+$janSum = 0;
+$febSum = 0;
 foreach ($data as $key => $value){
   foreach($value as $dataKey => $dataValue){
     $dateString = $dataValue['Due on'];
@@ -12,8 +14,19 @@ foreach ($data as $key => $value){
     if($formatted_month == $currentMonth){
         $totalSum += intval($dataValue['Price']);
     }
+
+    //January
+    if($formatted_month == "January"){
+        $janSum += intval($dataValue['Price']);
+    }
+    //February
+    if($formatted_month == "February"){
+        $febSum += intval($dataValue['Price']);
+    }
   }
 }
+//echo "Jan sale:".$janSum;
+//echo "Feb sale:".$febSum;
 ?>
 
 <!-- Earnings (Monthly) Card Example -->
